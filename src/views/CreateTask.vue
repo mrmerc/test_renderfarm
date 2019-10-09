@@ -4,12 +4,12 @@
 		<input @change="setDeadline" type="datetime-local" name="deadline" id="deadline" placeholder="Дедлайн" :min="getCurrentDateTime">
 		<textarea v-model="task_description" name="description" id="description" placeholder="Описание" maxlength="2048"></textarea>
 		<div class="tags-wrapper">
-			<ul @click.prevent="removeTag" v-if="task_tags.length > 0">
+			<ul @click.prevent="removeTag" v-if="task_tags.length">
 				<li v-for="tag in task_tags" :key="tag.id">{{ tag }}</li>
 			</ul>
-			<input @change="pushTag" type="text" name="tags" id="tags" placeholder="Тэги">
+			<input @change="pushTag" type="text" name="tags" id="tags" placeholder="Теги">
 		</div>
-		<input type="button" value="Добавить задачу" id="create">
+		<input @click.prevent="createTask" type="button" value="Добавить задачу" id="create">
 	</div>
 </template>
 
@@ -83,9 +83,11 @@ export default {
 				description: this.task_description,
 				deadline: this.task_deadline,
 				tags: this.task_tags,
+				status: 0, /* 0 - В работе, 1 - Завершено */
 			}
 
 			this.saveTask(task);
+			console.log(task);
 		}
 	}
 }
@@ -93,7 +95,7 @@ export default {
 
 <style lang="scss" scoped>
 	.create-task-container {
-		max-width: 1200px;
+		max-width: 800px;
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: 1fr 1fr;	
