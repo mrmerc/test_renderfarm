@@ -79,6 +79,7 @@ export default {
 
 		createTask() {
 			const task = {
+				id: this.$store.state.tasks.length + 1,
 				title: this.task_title,
 				description: this.task_description,
 				deadline: this.task_deadline,
@@ -87,7 +88,6 @@ export default {
 			}
 
 			this.saveTask(task);
-			console.log(task);
 		}
 	}
 }

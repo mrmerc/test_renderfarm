@@ -12,7 +12,7 @@
 		<ul v-if="tasks.length">
 			<li v-for="task in tasks" :key="task.id">
 				<div class="title-wrapper">
-					<router-link :to="{ name: 'task', params: { id: task.id } }" href="">{{ task.title }}</router-link>
+					<router-link :to="{ name: 'edit', params: { id: task.id } }">{{ task.title }}</router-link>
 					<p>{{ task.status ? 'Завершено' : 'В работе' }}</p>
 				</div>
 				<p>{{ task.description }}</p>
@@ -35,7 +35,6 @@ export default {
 
 	mounted() {
 		this.tasks = this.$store.state.tasks;
-		console.log(this.tasks);
 	},
 
 	methods: {
