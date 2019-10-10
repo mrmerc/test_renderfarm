@@ -1,29 +1,8 @@
 # test_renderfarm
 
-## Project setup
-```
-npm install
-```
+## Информация
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Создание, отображение и модификация заданий.
+[Демо](https://bymerc.xyz/renderfarm)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Написано с помощью Vue.js, vuex, vue-router
