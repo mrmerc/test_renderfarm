@@ -56,7 +56,7 @@ export default {
 
 		...mapActions([
 			'saveTask',
-    	]),
+		]),
 		
 		setDeadline(event) {
 			this.task_deadline = Date.parse(event.target.value);

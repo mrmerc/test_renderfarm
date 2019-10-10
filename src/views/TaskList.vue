@@ -41,6 +41,7 @@ export default {
 	methods: {
 		filterBy(event) {
 			const option = parseInt(event.target.value);
+			const date = Date.now();
 			this.tasks = this.$store.state.tasks;
 			switch(option) {
 				case 0:
@@ -50,7 +51,6 @@ export default {
 					this.tasks = this.tasks.filter(task => task.status === 1);
 					break;
 				case 2:
-					const date = Date.now();
 					this.tasks = this.tasks.filter(task => date >= task.deadline);
 					break;
 			}
