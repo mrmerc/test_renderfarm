@@ -16,12 +16,13 @@
 					<p>{{ task.status ? 'Завершено' : 'В работе' }}</p>
 				</div>
 				<p>{{ task.description }}</p>
-				<div class="tag-deadline-wrapper">
-					<p>Теги: {{ task.tags.join(' ') }}</p>
+				<div :class="`tag-deadline-wrapper ${ task.tags.length ? '' : 'notags' }`">
+					<p v-if="task.tags.length">Теги: {{ task.tags.join(' ') }}</p>
 					<p>Дедлайн: {{ getTaskDateTime(task.deadline) }}</p>
 				</div>
 			</li>
 		</ul>
+		<p v-else>Заданий нет</p>
 	</div>
 </template>
 
@@ -100,8 +101,10 @@ export default {
 			width: 100%;
 
 			li {
-				background: #eee;
-				border-radius: 5px;
+				background: transparent;
+				border: 1px solid rgba(184, 208, 255, 0.45);
+				border-radius: 2px;
+				color: rgb(32, 30, 30);
 				height: 120px;
 				margin-bottom: 24px;
 
@@ -116,6 +119,17 @@ export default {
 						font-weight: bold;
 						margin: 0;
 						padding: 16px;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+
+						@media screen and (min-width: 360px) {
+							max-width: 50%;
+						}
+
+						@media screen and (max-width: 748px) {
+							max-width: 70%;
+						}
 					}
 				}
 
@@ -124,6 +138,7 @@ export default {
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
+					text-align: left;
 				}
 
 				.tag-deadline-wrapper {
@@ -134,6 +149,14 @@ export default {
 					p {
 						padding: 16px;
 					}
+
+					@media screen and (max-width: 420px) {
+						font-size: 12px;
+					}
+				}
+
+				.notags {
+					justify-content: flex-end;
 				}
 			}
 		}
